@@ -1,4 +1,4 @@
-import Discord from 'discord.js';
+import { Client, Intents } from 'discord.js';
 import { dispatchCommand } from './dispatcher';
 import { get } from './environment';
 import mongoose from 'mongoose';
@@ -16,8 +16,20 @@ const logger = winston.createLogger({
   transports: [new winston.transports.Console({ level: 'debug' })]
 });
 
+// Specify the intents we want to use
+const intents = [
+  Intents.FLAGS.GUILDS,
+  Intents.FLAGS.GUILD_MESSAGES,
+  Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+  Intents.FLAGS.DIRECT_MESSAGES,
+  Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+  Intents.FLAGS.GUILD_SCHEDULED_EVENTS,
+  Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
+  Intents.FLAGS.GUILD_BANS,
+];
+
 // Initialize client
-const client = new Discord.Client();
+const client = new Client({ intents });
 client.commands = validCommands;
 client.logger = logger;
 client.prefix = get('BOT_PREFIX');
@@ -43,7 +55,7 @@ if (get('ENV') !== envs.TESTING) {
 }
 
 // Other client listeners
-client.on('message', (message) => {
+client.on('messageCreate', (message) => {
   if (shouldListen(message)) {
     dispatchCommand(message);
   }

@@ -7,6 +7,9 @@
   "repository": "https://github.com/cscareerhub/megabot.git",
   "author": "brendacs <brenda.zhang2@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=16.6.0"
+  },
   "scripts": {
     "build": "babel src -d lib --ignore **/*.test.js",
     "start": "nodemon -L",
@@ -31,7 +34,7 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.7",
     "babel-polyfill": "^6.26.0",
-    "discord.js": "^12.5.1",
+    "discord.js": "^13.6.0",
     "dotenv": "^10.0.0",
     "express": "^4.15.4",
     "husky": "^7.0.1",

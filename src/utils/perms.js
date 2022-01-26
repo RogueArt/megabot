@@ -78,7 +78,7 @@ export const checkRuleList = (
  * @returns {boolean} - whether or not the member has Admin permissions
  */
 export const isAdmin = (member) => {
-  return member.hasPermission('ADMINISTRATOR');
+  return member.permissions.has('ADMINISTRATOR');
 };
 
 /**
@@ -100,5 +100,5 @@ export const isContributor = (member) => {
  * @returns {boolean} - whether or not the member has Mod permissions
  */
 export const isMod = (member) => {
-  return member.hasPermission('MANAGE_MESSAGES');
+  return member.permissions.has('MANAGE_MESSAGES');
 };
