@@ -14,7 +14,7 @@ export const generateEmbed = (strings, options = {}) => {
     .setDescription(strings.description);
 
   if (strings.footer) {
-    embed.setFooter(strings.footer);
+    embed.setFooter({ text: strings.footer });
   }
 
   return embed;

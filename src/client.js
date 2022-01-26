@@ -1,9 +1,9 @@
-import { Client, Intents } from 'discord.js';
 import { dispatchCommand } from './dispatcher';
 import { get } from './environment';
 import mongoose from 'mongoose';
 import { processRawMessageForReactions } from './utils/rawMessageProxy';
 import { shouldListen } from './utils';
+import { Client, Intents } from 'discord.js';
 import { envs, validCommands } from './constants';
 import * as winston from 'winston';
 
@@ -25,7 +25,7 @@ const intents = [
   Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
   Intents.FLAGS.GUILD_SCHEDULED_EVENTS,
   Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
-  Intents.FLAGS.GUILD_BANS,
+  Intents.FLAGS.GUILD_BANS
 ];
 
 // Initialize client
